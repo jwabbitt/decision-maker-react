@@ -8,23 +8,23 @@ class App extends Component {
     super()
     this.state = {
       questions: [],
-      currentQuestion: {key:'', title:'', options: []},
-      currentOption: {key:'', title:''}
+      currentQuestion: {key:0, title:'', options: []}
     }
   }
 
-  handleInput = (e, item) => {
-    const itemTitle = e.target.value
+  handleInput = (e) => {
+    const {name, value, id} = e.target
+    const questionId = parseInt(id)
     const itemKey = Date.now()
-    if (item === 'question') {
-      const currentQuestion = {title: itemTitle, key: itemKey, options: []}
+    console.log("this ran and... ", e.target)
+    if (name === 'currentQuestion') {
       this.setState({
-        currentQuestion
+        [name]: {title: value, key: itemKey, options: []}
       })
-    } else if (item === 'option') {
-      const currentOption = {title: itemTitle, key: itemKey}
+    } else if (name === 'currentOptions') {
+      
       this.setState({
-        currentOption
+        [name]: {...this.state.currentOptions, [questionId]:{ title: value, key: itemKey, questionId: questionId } }
       })
     }
   }
@@ -37,8 +37,8 @@ class App extends Component {
       const questions = [...this.state.questions, newQuestion]
       this.setState({
         questions: questions,
-        currentQuestion: {key: '', title: '', options: []},
-        currentOption: {key: '', title: ''}
+        currentQuestion: {key: 0, title: '', options: []},
+        currentOption: {key: 0, title: '', questionId: 0}
       })
     }
     console.log()
@@ -53,10 +53,12 @@ class App extends Component {
     })
   }
 
+ 
+
   inputElement = React.createRef();
 
   render() {
-    //console.log(JSON.stringify(this.state))
+    console.log(JSON.parse(JSON.stringify(this.state)))
     return (
       <div className="App">
         <AddQuestion
@@ -67,7 +69,10 @@ class App extends Component {
         />
         <DisplayQuestions
           questionList={this.state.questions}
+          handleInput={this.handleInput}
           deleteQuestion={this.deleteQuestion}
+          currentOptions={this.state.currentOptions}
+          createNewOption={this.createNewOption}
         />
       </div>
     )
