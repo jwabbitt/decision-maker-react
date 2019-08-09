@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      questions: [],
+      questions: [{key:1, title: 'Default Question', options: [{key: 2, title: 'Default Option 1', questionId: 1},{key: 3, title: 'Default Option 2', questionId: 1},{key: 4, title: 'Default Option 3', questionId: 1}]}],
       currentQuestion: {key:0, title:'', options: []}
     }
   }

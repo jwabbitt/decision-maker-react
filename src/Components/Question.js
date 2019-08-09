@@ -3,10 +3,10 @@ import AddOption from './AddOption'
 import DisplayOption from './DisplayOption'
 
 class Question extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            options: [],
+            options: props.options || [],
             currentOption: { key: 0, title: '', questionId: 0 }
         }
     }
@@ -15,7 +15,6 @@ class Question extends Component {
         const {name, value, id} = e.target
         const questionId = parseInt(id)
         const itemKey = Date.now()
-        console.log("handleInput in Options... ", e.target)
         this.setState({
           [name]: {key: itemKey, title: value, questionId: questionId }
         })
@@ -32,6 +31,7 @@ class Question extends Component {
           options: options,
           currentOption: {key: 0, title: '', questionId: 0}
         })
+        //this.props.onCreateNewOption(option)
       }
     }
 
@@ -73,6 +73,7 @@ class Question extends Component {
                 <DisplayOption
                     questionKey={this.props.questionKey}
                     optionList={this.state.options}
+                    optionPropList={this.props.options}
                     deleteOption={this.deleteOption}
 
                 />
