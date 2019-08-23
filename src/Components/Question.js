@@ -25,23 +25,23 @@ class Question extends Component {
       e.preventDefault()
       const newOption = this.state.currentOption
       if (newOption.title !== '') {
-        console.log(`new option: ${newOption}`)
         const options = [...this.state.options, newOption]
         this.setState({
           options: options,
           currentOption: {key: 0, title: '', questionId: 0}
         })
-        //this.props.onCreateNewOption(option)
+        this.props.createNewOption(newOption)
       }
     }
 
-    deleteOption = key => {
+    deleteOption = (key, id) => {
       const filteredOptions = this.state.options.filter(option => {
         return option.key !== key
       })
       this.setState({
         options: filteredOptions
       })
+      this.props.deleteOption(key, id)
     }
 
     makeDecision = options => {
@@ -55,7 +55,6 @@ class Question extends Component {
     }
 
     render() {
-      console.log("Question Key: ", this.props.questionKey)
         return (
             <div key={this.props.questionKey}>
                 {this.props.title}

@@ -6,7 +6,7 @@ class DisplayOption extends Component {
         return (
             <div key={option.key}>
                 {option.title}
-                <button className="delete" onClick={() => this.props.deleteOption(option.key)}>
+                <button className="delete" onClick={() => this.props.deleteOption(option.key, option.questionId)}>
                     X
                 </button>
             </div>

@@ -11,6 +11,8 @@ class DisplayQuestions extends Component {
                     title={question.title}
                     options={question.options}
                     deleteQuestion={this.props.deleteQuestion}
+                    createNewOption={this.props.createNewOption}
+                    deleteOption={this.props.deleteOption}
                 />
             </div>
         )
