@@ -61,8 +61,8 @@ button {
 
 }
 
-.makeDecision button {
-  background: blue;
+button.makeDecision {
+  background: #1994ce;
 }
 
 .App-link {
