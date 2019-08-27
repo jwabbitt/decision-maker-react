@@ -5,7 +5,7 @@ class DisplayQuestions extends Component {
     inputOptionElement = React.createRef();
     createQuestions = (question) => {
         return (
-            <div key={question.key}>
+            <div key={question.key} className="displayQuestions">
                 <Question 
                     questionKey={question.key}
                     title={question.title}

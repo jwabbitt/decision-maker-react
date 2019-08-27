@@ -3,12 +3,19 @@ import React, { Component } from 'react'
 class DisplayOption extends Component {
     inputOptionElement = React.createRef();
     createOptions = option => {
+        const hideOptionsStyle = {
+            display: "none"
+        }
+        const showOptionsStyle = {
+            display: "inherit"
+        }
+        
         return (
-            <div key={option.key}>
-                {option.title}
+            <div key={option.key} className="displayOptions" style={this.props.hideOptions ? hideOptionsStyle : showOptionsStyle}>
                 <button className="delete" onClick={() => this.props.deleteOption(option.key, option.questionId)}>
-                    X
-                </button>
+                &#10006;
+                </button> {option.title}
+                
             </div>
         )
     }

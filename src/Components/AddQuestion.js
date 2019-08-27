@@ -8,20 +8,16 @@ class AddQuestion extends Component {
     render() {
         return (
             <div className="addQuestion">
-                <div className="header">
-               
-                        <input
-                            type="text"
-                            placeholder="Question"
-                            ref={this.props.inputElement}
-                            name="currentQuestion"
-                            value={this.props.currentQuestion.title}
-                            onChange={e => this.props.handleInput(e, 'question')}
-                            onKeyDown={e => {e.keyCode ===13 && this.props.createNewQuestion(e)}}
-                        />
-                        
-                </div>
-
+                <label>Add Questions:</label>
+                    <input
+                        type="text"
+                        placeholder="Question"
+                        ref={this.props.inputElement}
+                        name="currentQuestion"
+                        value={this.props.currentQuestion.title}
+                        onChange={e => this.props.handleInput(e, 'question')}
+                        onKeyDown={e => {e.keyCode ===13 && this.props.createNewQuestion(e)}}
+                    />
             </div>
         )
     }

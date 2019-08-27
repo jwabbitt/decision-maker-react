@@ -7,7 +7,8 @@ class Question extends Component {
         super(props)
         this.state = {
             options: props.options || [],
-            currentOption: { key: 0, title: '', questionId: 0 }
+            currentOption: { key: 0, title: '', questionId: 0 },
+            hideOptions: false
         }
     }
 
@@ -54,13 +55,21 @@ class Question extends Component {
       }
     }
 
+    showHideOptions() {
+      this.setState(prevState => {
+        const newState = !prevState.hideOptions
+        return { hideOptions: newState}
+      })
+    }
+
     render() {
         return (
             <div key={this.props.questionKey}>
-                {this.props.title}
+                <button className="delete" onClick={() => this.props.deleteQuestion(this.props.questionKey)}>&#10006;
+                </button><span className="questionTitle">{this.props.title}</span>
                 <button className="makeDecision" onClick={() => this.makeDecision(this.state.options)}>Make Decision</button>
-                <button className="delete" onClick={() => this.props.deleteQuestion(this.props.questionKey)}>
-                    X
+                <button className="showHideOptions" onClick={() => this.showHideOptions()}>
+                  {this.state.hideOptions ? "Show Options" : "Hide Options"}
                 </button>
                 <AddOption 
                     currentOption={this.state.currentOption || {}}
@@ -74,8 +83,10 @@ class Question extends Component {
                     optionList={this.state.options}
                     optionPropList={this.props.options}
                     deleteOption={this.deleteOption}
+                    hideOptions={this.state.hideOptions}
 
                 />
+                <hr></hr>
             </div>
         )
     }

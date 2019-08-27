@@ -8,7 +8,7 @@ class AddOption extends Component {
     render() {
         return(
             <div className="addOption">
-                
+                <label>Add options:</label>
                     <input
                         type="text"
                         placeholder="Option"

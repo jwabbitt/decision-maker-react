@@ -108,20 +108,28 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AddQuestion
-          createNewQuestion={this.createNewQuestion}
-          inputElement={this.inputElement}
-          handleInput={this.handleInput}
-          currentQuestion={this.state.currentQuestion}
-        />
-        <DisplayQuestions
-          questionList={this.state.questions}
-          handleInput={this.handleInput}
-          deleteQuestion={this.deleteQuestion}
-          currentOptions={this.state.currentOptions}
-          createNewOption={this.createNewOption}
-          deleteOption={this.deleteOption}
-        />
+        <div class="appHeader">
+          <h1 >The Decision Maker</h1>
+          <p>Randomly chooses options for your difficult questions</p>
+        </div>
+        
+        <div className="mainContent">
+          <AddQuestion
+            createNewQuestion={this.createNewQuestion}
+            inputElement={this.inputElement}
+            handleInput={this.handleInput}
+            currentQuestion={this.state.currentQuestion}
+          />
+          <DisplayQuestions
+            questionList={this.state.questions}
+            handleInput={this.handleInput}
+            deleteQuestion={this.deleteQuestion}
+            currentOptions={this.state.currentOptions}
+            createNewOption={this.createNewOption}
+            deleteOption={this.deleteOption}
+          />
+        </div>
+        
       </div>
     )
   }
